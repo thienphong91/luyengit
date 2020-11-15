@@ -229,28 +229,7 @@
             </div>
             <div class="col-3">
                 1
-            </div>
-            <div class="col-3">
-                <div class="d-flex">
-                    <a href="http://fb.com">
-                        <img src="images/fb.png" width="30" class="img-fluid" />
-                    </a>
-                    <a href="http://yt.com"><img width="30" class="img-fluid" src="images/yt.png" /></a>
-                    <a href="http://tw.com"><img width="30" class="img-fluid" src="images/tw.png" /></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-    </script>
-    <script src="owl/dist/owl.carousel.min.js">
-    </script>
+ 
 
 </body>
 
