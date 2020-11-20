@@ -19,10 +19,4 @@ function tong($a,$b)
 }
 echo 'Tổng 2 số'.$a.'và'.$b.'là ' . tong($a,$b);
 
-// Viet ham tinh tong 2 so
-// Giai phuong trinh bac 1
 ?>
-
-<?php
-Function pt($a,$b,$x)
-{
