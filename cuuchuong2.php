@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['A']),($_GET['B'])){
-    if(is_numeric($_GET['A']) && is_numeric($_GET['B']) $$ $_GET['A'] > 0 && $_GET['B'] >0 ){
+    if(is_numeric($_GET['A']) && is_numeric($_GET['B']) && $_GET['A'] > 0 && $_GET['B'] >0 ){
         
     }
 }
