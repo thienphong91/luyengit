@@ -32,6 +32,7 @@ if(is_numeric($_GET['A']) && is_numeric($_GET['B'])){
 }
 }
 
+
 if(isset($_GET['C'], $_GET['D'])){
     if(is_numeric($_GET['C']) && is_numeric($_GET['D'])){
         $equa =  (-$_GET['D'])/$_GET['C'];
@@ -95,3 +96,4 @@ if(isset($_GET['C'], $_GET['D'])){
 </body>
 
 </html>
+
