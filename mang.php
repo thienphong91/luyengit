@@ -45,4 +45,10 @@ function duyet($mang)
     }
 }
 //duyet($mang);
+$ma = "mã";
+$ten = "ten";
+$sl = "so luong";
+$test = [$ma,[$ten,$sl]];
+
+echo $test[1][1];
 ?>
