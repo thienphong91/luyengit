@@ -1,11 +1,64 @@
 <?php 
+session_start();
+function xemmang($ar)
+{
+  echo '<pre>',print_r($ar),'</pre>';
+}
 $mang =  array(
-		'sp001' => array('ten' => 'Canon MTL-24323', 		'don_gia' => 10000000, 	'so_luong' => 1, 'thanh_tien' => 10000000),
-		'sp002' => array('ten' => 'SamSung ML-1640', 		'don_gia' => 15000000, 	'so_luong' => 2, 'thanh_tien' => 30000000),
-		'sp003' => array('ten' => 'HP ATE Lide 100', 		'don_gia' => 17000000, 	'so_luong' => 1, 'thanh_tien' => 17000000),
-		'sp004' => array('ten' => 'Canon Scanner A', 		'don_gia' => 20000000, 	'so_luong' => 1, 'thanh_tien' => 20000000),	
-		'sp014' => array('ten' => 'Canon Scanner Lide 100', 'don_gia' => 234234, 	'so_luong' => 1, 'thanh_tien' => 20000000)
-	);
+		'sp001' => array('ten' => 'Canon MTL-24323','don_gia' => 10000000, 	'so_luong' => 1, 'thanh_tien' => 10000000),
+		'sp002' => array('ten' => 'SamSung ML-1640','don_gia' => 15000000, 	'so_luong' => 2, 'thanh_tien' => 30000000),
+		'sp003' => array('ten' => 'HP ATE Lide 100','don_gia' => 17000000, 	'so_luong' => 1, 'thanh_tien' => 17000000),
+		'sp004' => array('ten' => 'Canon Scanner A','don_gia' => 20000000, 	'so_luong' => 1, 'thanh_tien' => 20000000),	
+    'sp014' => array('ten' => 'Canon Scanner Lide 100', 'don_gia' => 234234, 	'so_luong' => 1, 'thanh_tien' => 20000000),
+    'sp015' => array('ten' => 'Canon Scanner Lide 100', 'don_gia' => 234234, 	'so_luong' => 1, 'thanh_tien' => 20000000)
+  );
+  function them($ma,$ten,$gia,$soluong,&$mang)
+  {
+    if(!isset($mang[$ma])){
+      $mang[$ma] = array('ten' => $ten,'don_gia' => $gia,'so_luong' =>$soluong,'thanh_tien' => $gia*$soluong);
+    }
+    else {
+      echo 'Ma da co';
+    }
+   // xemmang($mang);
+  }
+  function sua($ma,$soluong,&$mang)
+  {
+    if(isset($mang[$ma])){
+      $mang[$ma]['so_luong'] = $soluong;
+      $mang[$ma]['thanh_tien'] = $soluong * $mang[$ma]['don_gia'];
+    }
+    else {
+      echo 'Ma chua co';
+    }
+  }
+  function xoa($ma,&$mang)
+  {
+    if(isset($mang[$ma])){
+      unset($mang[$ma]);
+    }
+    else {
+      echo 'Ma chua co';
+    }
+  }
+ 
+  //su dung
+  if(isset($_POST['hanhdong']))
+  {
+      switch($_POST['hanhdong'])
+      {
+        case 'Thêm':
+            them($_POST['ma'],$_POST['ten'],$_POST['don_gia'],$_POST['so_luong'],$mang);
+         //   xemmang($mang);
+            break;
+          case 'Sửa':
+            sua($_POST['ma'],$_POST['so_luong'],$mang);
+            break;
+          case 'Xóa':
+            xoa($_POST['ma'],$mang);
+            break;
+      }
+  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,44 +89,21 @@ table.bang tr.header{
   <td>Số Lượng</td>
   <td>Thành Tiền(VNĐ)</td>
 </tr>
+<?php 
+$tong = 0;
+foreach($mang as $masp=>$sapham){ 
+  $tong += $sapham['thanh_tien'];
+  ?>
     <tr align="center">
-    <td>sp001</td>
-    <td align="left">Canon MTL-24323</td>
-    <td align="right">10,000,000</td>
-    <td>1</td>
-    <td align="right">10,000,000</td>
+    <td><?=$masp?></td>
+    <td align="left"><?=$sapham['ten']?></td>
+    <td align="right"><?=number_format($sapham['don_gia'],0,'.','.')?></td>
+    <td><?=number_format($sapham['so_luong'])?></td>
+    <td align="right"><?=number_format($sapham['thanh_tien'])?></td>
   </tr>
-    <tr align="center">
-    <td>sp002</td>
-    <td align="left">SamSung ML-1640</td>
-    <td align="right">15,000,000</td>
-    <td>2</td>
-    <td align="right">30,000,000</td>
-  </tr>
-    <tr align="center">
-    <td>sp003</td>
-    <td align="left">HP ATE Lide 100</td>
-    <td align="right">17,000,000</td>
-    <td>1</td>
-    <td align="right">17,000,000</td>
-  </tr>
-    <tr align="center">
-    <td>sp004</td>
-    <td align="left">Canon Scanner A</td>
-    <td align="right">20,000,000</td>
-    <td>1</td>
-    <td align="right">20,000,000</td>
-  </tr>
-    <tr align="center">
-    <td>sp014</td>
-    <td align="left">Canon Scanner Lide 100</td>
-    <td align="right">234,234</td>
-    <td>1</td>
-    <td align="right">20,000,000</td>
-  </tr>
-    
+<?php } ?>
 	    <tr align="right">
-    <td colspan="5">Tổng cộng: 97,000,000</td>
+    <td colspan="5">Tổng cộng: <?=number_format($tong)?></td>
   </tr>
 </table>
 <div style="margin-top:10px">

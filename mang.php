@@ -18,7 +18,7 @@ Duyet mang: foreach(mang as key=>value)
 $mang = [123,12,3,[123,12,3,[123,12,3,[[123,12,3,123,12,31,23,12,3],12,3,123,12,31,23,12,3],12,31,23,12,3],12,31,23,12,3],12,31,23,12,3];
 $str = 'chao cac ban';
 $mang2= explode(' ',$str);
-//echo $mang;
+ echo print_r($mang2);
 //var_dump($mang);
 //echo '<pre>',print_r($mang),'</pre>';
 //echo $mang[3][3][3][0][1];
@@ -44,11 +44,11 @@ function duyet($mang)
         }
     }
 }
-//duyet($mang);
+// echo duyet($mang);
 $ma = "mã";
 $ten = "ten";
 $sl = "so luong";
 $test = [$ma,[$ten,$sl]];
 
-echo $test[1][1];
+//echo $test[1][1];
 ?>
