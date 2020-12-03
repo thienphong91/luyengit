@@ -1,6 +1,6 @@
 <?<?php 
 session_start();
-// trước hết t phải gắn chức năng back lại cho nút "thoát đã", xong r làm cái kia =))
+// xoá session, về lại trang login
 if(isset($_POST['back'])){
   unset($_SESSION['user']);
   header("Location:Login.php");

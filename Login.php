@@ -18,7 +18,7 @@ elseif(isset($_POST['login'])){
       $_SESSION['user'] = $username;
     }
   }else{
-    echo 'Sai tên đăng nhập hoặc mật khẩu';
+    $alert = 'Sai tên đăng nhập hoặc mật khẩu';
   }
 }
 
@@ -30,21 +30,31 @@ elseif(isset($_POST['login'])){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<link rel="stylesheet" type="text/css" href="style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <div class="container">
-          <form action="Login.php" method="POST">
-            <a> User Name :</a>
-            <input type="text" name="user" class="form-control" placeholder="User Name">
-            <a> Password :</a>
-            <input type="Password" name="pass" class="form-control" placeholder="Password">
-            <input type="checkbox" name="check" value="yes"> <a>Nhớ mật khẩu</a><br>
-            <button type="submit" name="login"  class="btn btn-md btn-primary mt-2">Đăng nhập</button>
+    <div class="alert">
+      <h4><?php echo $alert??'' ?></h4>
+    </div>
+       <div class="login-box">
+          <h1>Welcome</h1><br>
+            <form action="login.php" method="POST">
+            <div class="textbox">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="user" placeholder="Username">
+            </div>
+            <div class="textbox mt-2">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="Password" name="pass" placeholder="Password">
+            </div>
+            <input type="checkbox" name="check" value="yes"> <a>Remember Password</a><br>
+            <button type="submit" name="login"  class="btn btn-md btn-primary mt-2">Login</button>
           </form>
       </div>
+      
+   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
