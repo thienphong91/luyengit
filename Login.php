@@ -18,7 +18,8 @@ elseif(isset($_POST['login'])){
       $_SESSION['user'] = $username;
     }
   }else{
-    $alert = 'Sai tên đăng nhập hoặc mật khẩu';
+    $alert = '<div class="mt-2"><p>Sai tên đăng nhập hoặc mật khẩu</p>
+    </div>';
   }
 }
 
@@ -35,21 +36,20 @@ elseif(isset($_POST['login'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div class="alert">
-      <h4><?php echo $alert??'' ?></h4>
-    </div>
+    
        <div class="login-box">
           <h1>Welcome</h1><br>
             <form action="login.php" method="POST">
             <div class="textbox">
               <i class="fa fa-user" aria-hidden="true"></i>
-            <input type="text" name="user" placeholder="Username">
+            <input type="text" name="user" value="<?php echo $_POST['user']??'' ?>" placeholder="Username">
             </div>
             <div class="textbox mt-2">
               <i class="fa fa-lock" aria-hidden="true"></i>
             <input type="Password" name="pass" placeholder="Password">
             </div>
             <input type="checkbox" name="check" value="yes"> <a>Remember Password</a><br>
+            <?php echo $alert??'' ?>
             <button type="submit" name="login"  class="btn btn-md btn-primary mt-2">Login</button>
           </form>
       </div>

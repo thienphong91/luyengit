@@ -6,11 +6,9 @@ body{
 	background: url(Images/bg.jpg) no-repeat;
 	background-size: cover;
 }
-.alert h4{
-	width: 380px;
-	position: absolute;
-	left:40%;
-	margin-top: 20px;
+.alert p{
+float: left;
+font-size: 10;
 }
 .login-box{
 	width: 280px;
