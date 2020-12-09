@@ -16,7 +16,9 @@ $ext = end(explode(".",$name));
 return $ext;
 }
 
-function upload($file){
+$report = ""; 
+
+function upload($file, &$report){
   $time = time();
     $tmp = $file['file']['tmp_name'];
     $size = $file['file']['size'];
@@ -60,7 +62,7 @@ upload($file);
         <input type="submit" name="upload" class="btn btn-sm btn-success" value="Upload">
         </div>
         <div>
-        <?php echo $report??'' ?>
+        <?php echo $report ?>
         </div>
       </form>
      
