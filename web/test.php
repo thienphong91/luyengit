@@ -1,13 +1,38 @@
 <?php
-var_dump($_POST);
-var_dump($_FILES);
+
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 $file = $_FILES;
+$time = time();
+
+function name($time){
+$today = date('d/m/Y - H:i:s');
+$trim = str_replace('/','',$today);
+$name = str_replace(':','',$trim);
+return $name;
+}
+function ext($file){
+$name = $file['file']['name'];
+$ext = end(explode(".",$name));
+return $ext;
+}
+
 function upload($file){
-    $name = $file['file']['name'];
-    $type = $file['file']['type'];
+  $time = time();
     $tmp = $file['file']['tmp_name'];
     $size = $file['file']['size'];
-
+    $type = $file['file']['type'];
+    $name = name($time).'.'.ext($file);
+    if($size > 5242880){
+      echo 'Dữ liệu quá lớn';
+    }else{
+     move_uploaded_file($tmp,"data/".$name);
+     $report = 'Upload thành công<br/>';
+     $report .= 'Path: Data/'.$name.'<br/>';
+     $report .= 'Dung lượng:'.round(($size/1024),2).'kb';
+     }
+}
+if(isset($_POST['upload'])){
+upload($file);
 }
 ?>
 
@@ -32,7 +57,10 @@ function upload($file){
            <input type="text" name="text" class="form-control">
         </div>
         <div>
-        <input type="submit" class="btn btn-sm btn-success" value="Upload">
+        <input type="submit" name="upload" class="btn btn-sm btn-success" value="Upload">
+        </div>
+        <div>
+        <?php echo $report??'' ?>
         </div>
       </form>
      

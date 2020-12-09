@@ -1,19 +1,20 @@
 <?php
-$time = time();
+var_dump($_POST);
+var_dump($_FILES);
+$file = $_FILES;
+function upload($file){
+    $name = $file['file']['name'];
+    $type = $file['file']['type'];
+    $tmp = $file['file']['tmp_name'];
+    $size = $file['file']['size'];
 
-function name($time){
-$today = date('d/m/Y - H:i:s');
-$trim = str_replace('/','',$today);
-$name = str_replace(':','',$trim);
-return $name;
 }
-echo name($time);
 ?>
 
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>test</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,20 +23,19 @@ echo name($time);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <form method="post" class="container" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="">text</label>
-            <input type="text" name="text">            
-        </div>
-        <div class="form-group">
-            <label for="">file</label>
-            <input type="file" name="file">            
-        </div>
-        <div class="form-group text-right">
-            <input type="submit" class="btn btn-sm btn-success" value="Login">            
-        </div>
-    </form>
       
+  <form method="post" class="container" enctype="multipart/form-data">
+          <div class="form-group">
+           <input type="file" name="file" class="form-control-file" >
+          </div>
+          <div class="form-group">
+           <input type="text" name="text" class="form-control">
+        </div>
+        <div>
+        <input type="submit" class="btn btn-sm btn-success" value="Upload">
+        </div>
+      </form>
+     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
