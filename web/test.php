@@ -12,7 +12,7 @@ return $name;
 }
 function ext($file){
 $name = $file['file']['name'];
-$ext = end(explode(".",$name));
+$ext = substr(strrchr($name,'.'),1);
 return $ext;
 }
 
@@ -34,7 +34,7 @@ function upload($file, &$report){
      }
 }
 if(isset($_POST['upload'])){
-upload($file);
+upload($file,$report);
 }
 ?>
 
